@@ -7,7 +7,6 @@ import Timeline from "@/components/Timeline";
 import ToolPanel from "@/components/ToolPanel";
 // Laksh
 // Taxil 
-
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
   
