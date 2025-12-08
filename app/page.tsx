@@ -5,17 +5,15 @@ import Sidebar from "@/components/Sidebar";
 import VideoPreview from "@/components/VideoPreview";
 import Timeline from "@/components/Timeline";
 import ToolPanel from "@/components/ToolPanel";
-
+// Laksh
+// Taxil 
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
-
+  
   return (
     <div className="h-screen flex flex-col">
-
       <Navbar />
-
-      <div className="flex flex-1 overflow-hidden">
-        
+      <div className="flex flex-1 overflow-hidden">      
         {/* Left Sidebar */}
         <Sidebar onSelectTool={setSelectedTool} />
 
