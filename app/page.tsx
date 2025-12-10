@@ -5,15 +5,11 @@ import Sidebar from "@/components/Sidebar";
 import VideoPreview from "@/components/VideoPreview";
 import Timeline from "@/components/Timeline";
 import ToolPanel from "@/components/ToolPanel";
-// Laksh
-// Taxil 3324234 45435 jbewdu poo
-// Divyang Testing2
+
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
-  
-  // videoSrc is an object URL (string) created from the uploaded File
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
-   // cleanup on unmount — revoke object URL if present
+
   useEffect(() => {
     return () => {
       if (videoSrc) {
@@ -21,41 +17,43 @@ export default function Home() {
       }
     };
   }, [videoSrc]);
-   // onUpload receives a File object from ToolPanel
+
   const handleUpload = (file: File | null) => {
     if (!file) return;
 
-    // revoke previous url
     if (videoSrc) {
       URL.revokeObjectURL(videoSrc);
     }
 
     const url = URL.createObjectURL(file);
     setVideoSrc(url);
+  };
 
-    // Optional: automatically close the panel after upload
-    // setSelectedTool(null);
+  const handleRemoveVideo = () => {
+    if (videoSrc) {
+      URL.revokeObjectURL(videoSrc);
+      setVideoSrc(null);
+    }
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-[#0a0f24] cyber-grid">
       <Navbar />
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Left Sidebar */}
         <Sidebar onSelectTool={setSelectedTool} />
 
-        {/* Main Content */}
         <div className="flex flex-col flex-1 relative">
-          <VideoPreview src={videoSrc} />
+          <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} />
           <Timeline />
         </div>
 
-        {/* Right Side Tool Panel */}
         <ToolPanel
           selectedTool={selectedTool}
           onClose={() => setSelectedTool(null)}
           onUploadFile={handleUpload}
+          hasVideo={!!videoSrc}
+          onRemoveVideo={handleRemoveVideo}
         />
       </div>
     </div>

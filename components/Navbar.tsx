@@ -1,45 +1,45 @@
 import { Undo2, Redo2, Save, Download } from "lucide-react";
+
 export default function Navbar() {
   return (
-    <div className="w-full h-14 px-6 bg-white border-b flex items-center justify-between">
-      <h1 className="text-xl font-semibold">Video Editor</h1>
+    <div className="w-full h-14 px-6 bg-[#0f1629] border-b border-[#5adaff]/20 flex items-center justify-between backdrop-blur-sm">
+      <h1 className="text-xl font-semibold text-[#5adaff] tracking-wide font-mono">◆ AI Video Editor</h1>
 
-      <div className="flex items-center gap-4">
-        <button className="px-4 py-1.5 rounded-md bg-gray-200">Create</button>
-        <button className="px-4 py-1.5 rounded-md bg-gray-200">Edit</button>
-        <button className="px-4 py-1.5 rounded-md bg-blue-600 text-white">Export</button>
+      <div className="flex items-center gap-3">
+        <button className="px-4 py-1.5 rounded-lg bg-[#1a1f35] text-white/80 hover:bg-[#5adaff]/10 hover:text-[#5adaff] transition-all border border-white/10 hover:border-[#5adaff]/40">
+          Create
+        </button>
+        <button className="px-4 py-1.5 rounded-lg bg-[#1a1f35] text-white/80 hover:bg-[#ff5af1]/10 hover:text-[#ff5af1] transition-all border border-white/10 hover:border-[#ff5af1]/40">
+          Edit
+        </button>
+        <button className="px-4 py-1.5 rounded-lg bg-[#5adaff]/20 text-[#5adaff] hover:bg-[#5adaff]/30 transition-all border border-[#5adaff]/40">
+          Export
+        </button>
       </div>
       
+      <div className="flex items-center gap-2">
+        {/* Undo */}
+        <button className="p-2 hover:bg-[#5adaff]/10 hover:text-[#5adaff] rounded-xl transition-all" title="Undo">
+          <Undo2 size={18} className="text-white/70" />
+        </button>
 
-<div className="flex items-center gap-3">
+        {/* Redo */}
+        <button className="p-2 hover:bg-[#5adaff]/10 hover:text-[#5adaff] rounded-xl transition-all" title="Redo">
+          <Redo2 size={18} className="text-white/70" />
+        </button>
 
-  {/* Existing Buttons (do NOT change) */}
-  { /* your existing navbar items here */ }
+        {/* Save */}
+        <button className="px-3 py-2 bg-[#ff5af1]/20 text-[#ff5af1] hover:bg-[#ff5af1]/30 rounded-xl transition-all flex items-center gap-1.5 border border-[#ff5af1]/30" title="Save">
+          <Save size={16} />
+          <span className="text-sm font-medium">Save</span>
+        </button>
 
-  {/* ➕ Added Undo */}
-  <button className="p-2 hover:bg-gray-800 rounded-lg transition" title="Undo">
-    <Undo2 size={20} />
-  </button>
-
-  {/* ➕ Added Redo */}
-  <button className="p-2 hover:bg-gray-800 rounded-lg transition" title="Redo">
-    <Redo2 size={20} />
-  </button>
-
-  {/* ➕ Added Save */}
-  <button className="p-2 bg-green-500 hover:bg-green-600 rounded-lg transition flex items-center gap-1" title="Save">
-    <Save size={18} />
-    Save
-  </button>
-
-  {/* ➕ Added Download */}
-  <button className="p-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition flex items-center gap-1" title="Download">
-    <Download size={18} />
-    Download
-  </button>
-
-</div>
-
+        {/* Download */}
+        <button className="px-3 py-2 bg-[#5adaff]/20 text-[#5adaff] hover:bg-[#5adaff]/30 rounded-xl transition-all flex items-center gap-1.5 border border-[#5adaff]/30" title="Download">
+          <Download size={16} />
+          <span className="text-sm font-medium">Download</span>
+        </button>
+      </div>
     </div>
   );
 }
