@@ -8,11 +8,6 @@ import ToolPanel from "@/components/ToolPanel";
 // Laksh
 // Taxil 3324234 45435 jbewdu poo
 // Divyang Testing2
-<<<<<<< HEAD
-
-=======
-//Divyang Testing3
->>>>>>> d4a9e530b0b8e3c8dd68b237069803cc43ee6788
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
   
