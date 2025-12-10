@@ -6,7 +6,7 @@ import VideoPreview from "@/components/VideoPreview";
 import Timeline from "@/components/Timeline";
 import ToolPanel from "@/components/ToolPanel";
 // Laksh
-// Taxil 3324234 45435 jbewdu poo
+// Taxil 3324234 45435 jbewdu poo ff
 export default function Home() {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
   
@@ -20,6 +20,13 @@ export default function Home() {
       }
     };
   }, [videoSrc]);
+  
+  const handleRemove = () => {
+    if (videoSrc) {
+      URL.revokeObjectURL(videoSrc);
+    }
+    setVideoSrc(null);
+  };
    // onUpload receives a File object from ToolPanel
   const handleUpload = (file: File | null) => {
     if (!file) return;
