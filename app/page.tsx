@@ -40,11 +40,11 @@ export default function Home() {
     <div className="h-screen flex flex-col bg-[#0a0f24] cyber-grid">
       <Navbar />
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
         <Sidebar onSelectTool={setSelectedTool} />
 
-        <div className="flex flex-col flex-1 relative">
-          <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} />
+        <div className="flex flex-col flex-1">
+          <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} isToolPanelOpen={!!selectedTool} />
           <Timeline />
         </div>
 

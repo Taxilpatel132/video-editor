@@ -1,41 +1,60 @@
 "use client";
 
-import { Trash2 } from "lucide-react";
+import { Trash2, Play, Pause, Volume2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface Props {
   src: string | null;
   onRemove?: () => void;
+  isToolPanelOpen?: boolean;
 }
 
-export default function VideoPreview({ src, onRemove }: Props) {
+export default function VideoPreview({ src, onRemove, isToolPanelOpen = false }: Props) {
   return (
-    <div className="flex-1 flex items-center justify-center bg-[#0a0f24] p-6">
-      <div className="w-[70%] aspect-video bg-black rounded-2xl overflow-hidden relative flex items-center justify-center border border-[#5adaff]/20 hover:border-[#5adaff]/40 transition-all">
-        {src ? (
-          <>
-            <video
-              src={src}
-              controls
-              className="w-full h-full object-contain bg-black rounded-2xl"
-            />
-            {/* Remove overlay button */}
-            {onRemove && (
-              <button
-                onClick={onRemove}
-                className="absolute top-4 right-4 p-2 bg-[#0f1629]/80 hover:bg-[#ff5af1]/20 rounded-xl transition-all border border-[#ff5af1]/40"
-                title="Remove video"
-              >
-                <Trash2 size={16} className="text-[#ff5af1]" />
-              </button>
-            )}
-          </>
-        ) : (
-          <div className="text-center">
-            <div className="text-[#5adaff] text-lg font-medium tracking-wide">Video Preview</div>
-            <div className="text-white/50 text-sm mt-2">Upload a video to get started</div>
-          </div>
-        )}
-      </div>
+    <div className={`flex-1 flex items-center justify-center bg-[#0a0f24] ${isToolPanelOpen ? 'p-2' : 'p-6'}`}>
+      <Card className="w-[70%] aspect-video bg-black border-[#5adaff]/20 hover:border-[#5adaff]/40 transition-all overflow-hidden relative">
+        <CardContent className="p-0 h-full">
+          {src ? (
+            <>
+              <video
+                src={src}
+                controls
+                className="w-full h-full object-contain bg-black rounded-xl"
+              />
+              {/* Remove overlay button */}
+              {onRemove && (
+                <Button
+                  onClick={onRemove}
+                  variant="destructive"
+                  size="icon"
+                  className="absolute top-4 right-4 bg-[#0f1629]/80 hover:bg-[#ff5af1]/20 border border-[#ff5af1]/40 text-[#ff5af1] hover:text-white"
+                  title="Remove video"
+                >
+                  <Trash2 size={16} />
+                </Button>
+              )}
+              <div className="absolute bottom-4 left-4">
+                <Badge variant="outline" className="bg-[#0f1629]/80 border-[#5adaff]/40 text-[#5adaff]">
+                  <Play size={12} className="mr-1" />
+                  Ready to Edit
+                </Badge>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center">
+                <div className="text-[#5adaff] text-lg font-medium tracking-wide mb-2">Video Preview</div>
+                <div className="text-white/50 text-sm mb-4">Upload a video to get started</div>
+                <Badge variant="outline" className="bg-[#5adaff]/10 border-[#5adaff]/30 text-[#5adaff]">
+                  No Media Loaded
+                </Badge>
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
