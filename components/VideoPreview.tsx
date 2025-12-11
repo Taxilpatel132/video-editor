@@ -13,8 +13,8 @@ interface Props {
 
 export default function VideoPreview({ src, onRemove, isToolPanelOpen = false }: Props) {
   return (
-    <div className={`flex-1 flex items-center justify-center bg-[#0a0f24] ${isToolPanelOpen ? 'p-2' : 'p-6'}`}>
-      <Card className="w-[70%] aspect-video bg-black border-[#5adaff]/20 hover:border-[#5adaff]/40 transition-all overflow-hidden relative">
+    <div className={`flex-1 flex items-center ${isToolPanelOpen ? 'justify-end pr-4' : 'justify-center'} bg-[#0a0f24] ${isToolPanelOpen ? 'pr-20' : 'p-6'} transition-all duration-300`}>
+      <Card className={`${isToolPanelOpen ? 'w-[65%]' : 'w-[70%]'} aspect-video bg-black border-[#5adaff]/20 hover:border-[#5adaff]/40 transition-all duration-300 overflow-hidden relative`}>
         <CardContent className="p-0 h-full">
           {src ? (
             <>

@@ -44,7 +44,11 @@ export default function Home() {
         <Sidebar onSelectTool={setSelectedTool} />
 
         <div className="flex flex-col flex-1">
+          
+            
+         
           <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} isToolPanelOpen={!!selectedTool} />
+          
           <Timeline />
         </div>
 
