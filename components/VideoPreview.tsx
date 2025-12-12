@@ -1,17 +1,18 @@
 "use client";
 
-import { Trash2, Play, Pause, Volume2 } from "lucide-react";
+import { Trash2, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { RefObject } from "react";
 
 interface Props {
   src: string | null;
   onRemove?: () => void;
-  isToolPanelOpen?: boolean;
+  videoRef?: RefObject<HTMLVideoElement>;
 }
 
-export default function VideoPreview({ src, onRemove, isToolPanelOpen = false }: Props) {
+export default function VideoPreview({ src, onRemove, videoRef }: Props) {
   return (
     <div className="w-full h-full flex items-center justify-center">
       <Card className="w-[90%] max-w-4xl aspect-video bg-black border-[#5adaff]/20 hover:border-[#5adaff]/40 transition-all duration-300 overflow-hidden relative neon-glow">{/* Larger video preview */}
@@ -19,9 +20,9 @@ export default function VideoPreview({ src, onRemove, isToolPanelOpen = false }:
           {src ? (
             <>
               <video
+                ref={videoRef}
                 src={src}
-                controls
-                className="w-full h-full object-contain bg-black rounded-xl"
+                className="w-full h-full object-contain bg-black"
               />
               {/* Remove overlay button */}
               {onRemove && (

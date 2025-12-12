@@ -1,6 +1,6 @@
 "use client";
 
-import { Upload, Sparkle, ChevronRight, X, Trash2 } from "lucide-react";
+import { Upload, Sparkle, ChevronRight, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,8 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 interface Props {
-  selectedTool: string | null;
-  onClose: () => void;
+  selectedTool: string;
   onUploadFile: (file: File | null) => void;
   hasVideo?: boolean;
   onRemoveVideo?: () => void;
@@ -17,7 +16,6 @@ interface Props {
 
 export default function ToolPanel({
   selectedTool,
-  onClose,
   onUploadFile,
   hasVideo = false,
   onRemoveVideo,
