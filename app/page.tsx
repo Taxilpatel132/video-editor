@@ -37,28 +37,36 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#0a0f24] cyber-grid">
-      <Navbar />
-
-      <div className="flex flex-1 overflow-hidden relative">
-        <Sidebar onSelectTool={setSelectedTool} />
-
-        <div className="flex flex-col flex-1">
+    <div className="h-screen flex bg-[#0a0f24] cyber-grid">
+      {/* Left Sidebar - Full Height */}
+      <Sidebar onSelectTool={setSelectedTool} />
+      
+      {/* Right Side - Everything except sidebar */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Navbar */}
+        <Navbar />
+        
+        {/* Main Area - Above Timeline */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* ToolPanel - Next to sidebar */}
+          <div className="w-80 bg-[#0f1629] border-r border-[#5adaff]/20 overflow-y-auto">
+            <ToolPanel
+              selectedTool={selectedTool || "video"}
+              onClose={() => {}}
+              onUploadFile={handleUpload}
+              hasVideo={!!videoSrc}
+              onRemoveVideo={handleRemoveVideo}
+            />
+          </div>
           
-            
-         
-          <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} isToolPanelOpen={!!selectedTool} />
-          
-          <Timeline />
+          {/* Video Preview - Center, filling remaining space */}
+          <div className="flex-1 flex items-center justify-center bg-[#0a0f24] p-6">
+            <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} isToolPanelOpen={false} />
+          </div>
         </div>
-
-        <ToolPanel
-          selectedTool={selectedTool}
-          onClose={() => setSelectedTool(null)}
-          onUploadFile={handleUpload}
-          hasVideo={!!videoSrc}
-          onRemoveVideo={handleRemoveVideo}
-        />
+        
+        {/* Timeline - Full width except below sidebar */}
+        <Timeline />
       </div>
     </div>
   );

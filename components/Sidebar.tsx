@@ -74,13 +74,13 @@ export default function Sidebar({ onSelectTool }: SidebarProps) {
   };
 
   return (
-    <div className="w-64 h-full bg-[#0f1629] border-r border-[#5adaff]/20 p-4">
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-1">
-          <Sparkles size={14} className="text-[#5adaff]" />
-          <h2 className="text-sm font-semibold text-[#5adaff] tracking-wide">Tools</h2>
+    <div className="w-20 h-full bg-[#0f1629] border-r border-[#5adaff]/20 p-2">{/* Reduced to w-40 and p-2 for better fit */}
+      <div className="mb-3">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <Sparkles size={12} className="text-[#5adaff]" />
+          <h2 className="text-xs font-semibold text-[#5adaff] tracking-wide">Tools</h2>
         </div>
-        <p className="text-xs text-white/60">Select editing tools</p>
+        <p className="text-xs text-white/60">Select tools</p>
       </div>
 
       <div className="space-y-2">
@@ -91,22 +91,21 @@ export default function Sidebar({ onSelectTool }: SidebarProps) {
           return (
             <Card 
               key={tool.id}
-              className={`bg-[#1a1f35] border-white/10 ${colorClasses.hoverBorder} cursor-pointer transition-all group ${colorClasses.hoverBg}`}
+              className={`bg-[#1a1f35] border-white/10 ${colorClasses.hoverBorder} cursor-pointer transition-all group ${colorClasses.hoverBg} relative py-2`}
               onClick={() => onSelectTool(tool.id)}
             >
-              <CardContent className="p-2">
-                <div className="flex items-center gap-2">
+              <CardContent className="p-1.5">
+                <div className="flex flex-col items-center gap-1 text-center">
                   <div className={`p-1.5 ${colorClasses.iconBg} rounded ${colorClasses.iconBgHover} transition-all`}>
-                    <IconComponent size={14} className={colorClasses.iconColor} />
+                    <IconComponent size={16} className={colorClasses.iconColor} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className={`text-sm font-medium text-white ${colorClasses.textHover} tracking-wide truncate`}>
+                  <div className="w-full">
+                    <div className={`text-xs font-medium text-white ${colorClasses.textHover} tracking-wide truncate`}>
                       {tool.name}
                     </div>
-                    <div className="text-xs text-white/50">{tool.description}</div>
                   </div>
                   {tool.badge && (
-                    <Badge variant="outline" className={`${colorClasses.badgeBg} ${colorClasses.badgeText} ${colorClasses.badgeBorder} text-xs px-1 py-0 h-4`}>
+                    <Badge variant="outline" className={`${colorClasses.badgeBg} ${colorClasses.badgeText} ${colorClasses.badgeBorder} text-xs px-1 py-0 h-3 absolute top-0.5 right-0.5`}>
                       {tool.badge}
                     </Badge>
                   )}

@@ -33,24 +33,15 @@ export default function ToolPanel({
     e.currentTarget.value = "";
   };
 
-  if (!selectedTool) return null;
+  const currentTool = selectedTool || "video";
 
   return (
-    <div className="absolute left-64 top-0 w-80 h-[calc(100%-10rem)] bg-[#0f1629] border-l border-r border-[#5adaff]/20 p-4 overflow-y-auto bottom-0 z-10 shadow-xl">
-      <Button
-        onClick={onClose}
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 top-4 text-white/60 hover:text-[#ff5af1] hover:bg-[#ff5af1]/10 transition-all"
-        aria-label="Close panel"
-      >
-        <X size={20} />
-      </Button>
+    <div className="h-full p-4">{/* Container styling now handled by parent */}
 
-      <h1 className="text-xl font-semibold mb-2 capitalize text-[#5adaff] tracking-wide">{selectedTool}</h1>
-      <p className="text-sm text-white/60 mb-6">Manage your {selectedTool} content</p>
+      <h1 className="text-xl font-semibold mb-2 capitalize text-[#5adaff] tracking-wide">{currentTool}</h1>
+      <p className="text-sm text-white/60 mb-6">Manage your {currentTool} content</p>
 
-      {selectedTool === "video" && (
+      {currentTool === "video" && (
         <div className="space-y-6">
           {/* Upload */}
           <Card className="bg-[#1a1f35] border-white/10 hover:border-[#5adaff]/40 transition-all cursor-pointer group">
@@ -149,10 +140,10 @@ export default function ToolPanel({
         </div>
       )}
 
-      {selectedTool !== "video" && (
+      {currentTool !== "video" && (
         <Card className="bg-[#1a1f35] border-white/10">
           <CardContent className="text-center py-12">
-            <CardTitle className="text-[#5adaff] text-lg tracking-wide mb-2">Tools for {selectedTool}</CardTitle>
+            <CardTitle className="text-[#5adaff] text-lg tracking-wide mb-2">Tools for {currentTool}</CardTitle>
             <CardDescription className="text-white/50 mb-4">Coming soon...</CardDescription>
             <Progress 
               value={30} 
