@@ -1,6 +1,6 @@
 "use client";
 
-import { Upload, Sparkle, ChevronRight, X, Trash2 } from "lucide-react";
+import { Upload, Sparkle, ChevronRight, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,8 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 interface Props {
-  selectedTool: string | null;
-  onClose: () => void;
+  selectedTool: string;
   onUploadFile: (file: File | null) => void;
   hasVideo?: boolean;
   onRemoveVideo?: () => void;
@@ -17,7 +16,6 @@ interface Props {
 
 export default function ToolPanel({
   selectedTool,
-  onClose,
   onUploadFile,
   hasVideo = false,
   onRemoveVideo,
@@ -33,19 +31,8 @@ export default function ToolPanel({
     e.currentTarget.value = "";
   };
 
-  if (!selectedTool) return null;
-
   return (
     <div className="absolute left-64 top-0 w-80 h-[calc(100%-10rem)] bg-[#0f1629] border-l border-r border-[#5adaff]/20 p-4 overflow-y-auto bottom-0 z-10 shadow-xl">
-      <Button
-        onClick={onClose}
-        variant="ghost"
-        size="icon"
-        className="absolute right-4 top-4 text-white/60 hover:text-[#ff5af1] hover:bg-[#ff5af1]/10 transition-all"
-        aria-label="Close panel"
-      >
-        <X size={20} />
-      </Button>
 
       <h1 className="text-xl font-semibold mb-2 capitalize text-[#5adaff] tracking-wide">{selectedTool}</h1>
       <p className="text-sm text-white/60 mb-6">Manage your {selectedTool} content</p>
