@@ -5,9 +5,9 @@ import Sidebar from "@/components/Sidebar";
 import VideoPreview from "@/components/VideoPreview";
 import Timeline from "@/components/Timeline";
 import ToolPanel from "@/components/ToolPanel";
-
+//testing the code rabit
 export default function Home() {
-  const [selectedTool, setSelectedTool] = useState<string>("video");
+  const [selectedTool, setSelectedTool] = useState<string | null>("video");
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -111,7 +111,7 @@ export default function Home() {
           <div className="w-80 bg-[#0f1629] border-r border-[#5adaff]/20 overflow-y-auto">
             <ToolPanel
               selectedTool={selectedTool || "video"}
-              onClose={() => {}}
+                
               onUploadFile={handleUpload}
               hasVideo={!!videoSrc}
               onRemoveVideo={handleRemoveVideo}
@@ -120,7 +120,7 @@ export default function Home() {
           
           {/* Video Preview - Center, filling remaining space */}
           <div className="flex-1 flex items-center justify-center bg-[#0a0f24] p-6">
-            <VideoPreview src={videoSrc} onRemove={handleRemoveVideo} isToolPanelOpen={false} />
+            <VideoPreview src={videoSrc} onRemove={handleRemoveVideo}  />
           </div>
         </div>
         
